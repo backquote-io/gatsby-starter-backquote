@@ -1,21 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Backquote Demo Blog`,
+    author: `Toghrul Jafarli`,
+    description: `A starter blog demonstrating using Backquote with Gatsby.`,
+    siteUrl: `https://backquote-blog-demo.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `jtogrul`,
     },
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -72,6 +65,13 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: "gatsby-source-backquote",
+      options: {
+        blogId: "<BLOG_ID>",
+        token: "<BLOG_TOKEN>",
       },
     },
   ],
