@@ -58,14 +58,14 @@ class BlogPostTemplate extends React.Component {
           >
             <li>
               {previous && (
-                <Link to={previous.id} rel="prev">
+                <Link to={previous.slug} rel="prev">
                   ← {previous.title}
                 </Link>
               )}
             </li>
             <li>
               {next && (
-                <Link to={next.id} rel="next">
+                <Link to={next.slug} rel="next">
                   {next.title} →
                 </Link>
               )}
@@ -87,15 +87,15 @@ export const pageQuery = graphql`
         author
       }
     }
-    backquotePost(id: { eq: $slug }) {
+    backquotePost(slug: { eq: $slug }) {
+      id
       blog_id
+      title
+      slug
+      short_description
       body_compiled
       body_source
-      id
-      short_description
-      status
       time_created(formatString: "MMMM DD, YYYY")
-      title
     }
   }
 `

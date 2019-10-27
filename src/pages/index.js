@@ -18,14 +18,14 @@ class BlogIndex extends React.Component {
         <Bio />
         {posts.map(({ node }) => {
           return (
-            <article key={node.id}>
+            <article key={node.slug}>
               <header>
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
                   }}
                 >
-                  <Link style={{ boxShadow: `none` }} to={node.id}>
+                  <Link style={{ boxShadow: `none` }} to={node.slug}>
                     {node.title}
                   </Link>
                 </h3>
@@ -58,13 +58,14 @@ export const pageQuery = graphql`
     allBackquotePost(sort: { fields: time_created, order: DESC }) {
       edges {
         node {
+          id
           blog_id
+          title
+          slug
+          short_description
           body_compiled
           body_source
-          id
-          short_description
           time_created(formatString: "MMMM DD, YYYY")
-          title
         }
       }
     }

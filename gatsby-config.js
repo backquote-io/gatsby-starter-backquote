@@ -46,7 +46,7 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`, // TODO configure for backquote
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -70,8 +70,8 @@ module.exports = {
     {
       resolve: "gatsby-source-backquote",
       options: {
-        blogId: "<BLOG_ID>",
-        token: "<BLOG_TOKEN>",
+        blogId: process.env.BACKQUOTE_BLOG_ID,
+        token: process.env.BACKQUOTE_BLOG_TOKEN,
       },
     },
   ],

@@ -12,6 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               id
+              slug
               title
             }
           }
@@ -32,10 +33,10 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: `/${post.node.id}/`,
+      path: `/${post.node.slug}/`,
       component: blogPost,
       context: {
-        slug: post.node.id,
+        slug: post.node.slug,
         previous,
         next,
       },
@@ -43,15 +44,3 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `BackquotePost`) {
-    const value = `/${node.id}`
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
