@@ -29,9 +29,8 @@ exports.sourceNodes = (
   const token = configOptions.token
   const blogId = configOptions.blogId
 
-  const apiUrl = `https://api.backquote.io/expose/api/v1/${blogId}/posts`
+  const apiUrl = `https://api.backquote.io/expose/v1/${blogId}/posts`
 
-  // TODO add pagination support
   return (
     fetch(apiUrl, {
       headers: { Authorization: `Bearer ${token}` },
@@ -47,5 +46,7 @@ exports.sourceNodes = (
           createNode(nodeData)
         })
       })
+
+    // TODO fetch next pages too if exist
   )
 }
