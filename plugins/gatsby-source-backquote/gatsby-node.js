@@ -31,22 +31,37 @@ exports.sourceNodes = (
 
   const apiUrl = `https://api.backquote.io/expose/v1/${blogId}/posts`
 
-  return (
-    fetch(apiUrl, {
+  const getPosts = async function (pageNo = 1) {
+    let actualUrl = apiUrl + `?page=${pageNo}`;
+    var apiResults = await fetch(actualUrl, {
       headers: { Authorization: `Bearer ${token}` },
     })
-      // Parse the response as JSON
-      .then(response => response.json())
-      // Process the response data into a node
-      .then(data => {
-        data.forEach(post => {
-          // Process the post data to match the structure of a Gatsby node
-          const nodeData = processPost(post)
-          // Use Gatsby's createNode helper to create a node from the node data
-          createNode(nodeData)
-        })
-      })
+      .then(resp => {
+        return resp.json();
+      });
 
-    // TODO fetch next pages too if exist
-  )
+    return apiResults;
+  }
+
+  const getEntirePostList = async function (pageNo = 1) {
+    const results = await getPosts(pageNo);
+    if (results.length > 0) {
+      return results.concat(await getEntirePostList(pageNo + 1));
+    } else {
+      return results;
+    }
+  };
+
+  return (async () => {
+
+    const entireList = await getEntirePostList();
+
+    entireList.forEach(post => {
+      // Process the post data to match the structure of a Gatsby node
+      const nodeData = processPost(post)
+      // Use Gatsby's createNode helper to create a node from the node data
+      createNode(nodeData)
+    })
+
+  })();
 }
