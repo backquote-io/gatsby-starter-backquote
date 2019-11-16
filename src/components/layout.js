@@ -3,7 +3,14 @@ import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
 
+import Prism from "prismjs"
+import "../../node_modules/prismjs/themes/prism.css"
+
 class Layout extends React.Component {
+  componentDidMount() {
+    Prism.highlightAll()
+  }
+
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
