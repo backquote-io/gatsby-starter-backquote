@@ -1,11 +1,11 @@
 {
-  "name": "backquote-demo-blog",
+  "name": "gatsby-starter-backquote",
   "private": true,
   "description": "A demo for using Gatsby with Backquote",
   "version": "0.1.0",
   "author": "Toghrul Jafarli <ceferlitogrul@gmail.com>",
   "bugs": {
-    "url": "https://github.com/jtogrul/backquote-demo-blog/issues"
+    "url": "https://github.com/backquote-io/gatsby-starter-backquote/issues"
   },
   "dependencies": {
     "gatsby": "^2.17.15",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "prettier": "^1.19.1"
   },
-  "homepage": "https://github.com/jtogrul/backquote-demo-blog#readme",
+  "homepage": "https://github.com/backquote-io/gatsby-starter-backquote#readme",
   "keywords": [
     "gatsby"
   ],
@@ -47,7 +47,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jtogrul/backquote-demo-blog.git"
+    "url": "git+https://github.com/backquote-io/gatsby-starter-backquote.git"
   },
   "scripts": {
     "build": "gatsby build",
